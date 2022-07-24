@@ -14,7 +14,7 @@ class UserAuth extends Dbh{
         if($this->validatePassword($password, $confirmPassword)){
             $sql = "INSERT INTO Students (`full_names`, `email`, `password`, `country`, `gender`) VALUES ('$fullname','$email', '$password', '$country', '$gender')";
             if($conn->query($sql)){
-               echo "Ok";
+               echo "Registeration Successful";
             } else {
                 echo "Opps". $conn->error;
             } 
@@ -91,7 +91,7 @@ class UserAuth extends Dbh{
                     <form action='action.php' method='post'>
                     <input type='hidden' name='id'" .
                      "value=" . $data['id'] . ">".
-                    "<button class='btn btn-danger' type='submit', name='delete'> DELETE </button> </form> </td>".
+                    "<button class='btn btn-danger' type='delete', name='delete'> DELETE </button> </form> </td>".
                     "</tr>";
             }
             echo "</table></table></center></body></html>";
@@ -102,7 +102,7 @@ class UserAuth extends Dbh{
         $conn = $this->db->connect();
         $sql = "DELETE FROM Students WHERE id = '$id'";
         if($conn->query($sql) === TRUE){
-            header("refresh:0.5; url=action.php?all");
+            header("Location: ./action.php");
         } else {
             header("refresh:0.5; url=action.php?all=?message=Error");
         }
