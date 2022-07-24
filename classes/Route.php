@@ -80,7 +80,7 @@ class FormController extends UserAuth{
                 $this->getAllUsers();
                 break;
             default:
-                echo 'No form was submitted';
+                echo 'Successful';
                 break;
         }
     }
